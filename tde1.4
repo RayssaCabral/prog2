@@ -1,0 +1,33 @@
+#include &lt;stdio.h&gt;
+#define MAX_PRODUTOS 100
+
+struct Produto {
+int id;
+char nome[50];
+float preco;
+};
+int main() {
+struct Produto produtos[MAX_PRODUTOS];
+int quantidade, i;
+float soma = 0.0;
+
+printf(&quot;Digite a quantidade de produtos: &quot;);
+scanf(&quot;%d&quot;, &amp;quantidade);
+for (i = 0; i &lt; quantidade; i++) {
+printf(&quot;Digite o ID do produto %d: &quot;, i + 1);
+scanf(&quot;%d&quot;, &amp;produtos[i].id);
+printf(&quot;Digite o nome do produto %d: &quot;, i + 1);
+scanf(&quot;%s&quot;, produtos[i].nome);
+printf(&quot;Digite o preco do produto %d: &quot;, i + 1);
+scanf(&quot;%f&quot;, &amp;produtos[i].preco);
+soma += produtos[i].preco; // Acumulando a soma dos preços
+}
+
+if (quantidade &gt; 0) {
+float media = soma / quantidade;
+printf(&quot;A média dos preços dos produtos é: R$ %.2f\n&quot;, media);
+} else {
+printf(&quot;Nenhum produto cadastrado.\n&quot;);
+}
+return 0;
+}

@@ -1,0 +1,44 @@
+2_
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#define MAX_PRODUTOS 100
+struct Produto {
+int id;
+
+char nome[50];
+float preco;
+};
+int main() {
+struct Produto produtos[MAX_PRODUTOS];
+int quantidade, idBuscado, i;
+printf(&quot;Digite a quantidade de produtos: &quot;);
+scanf(&quot;%d&quot;, &amp;quantidade);
+
+for (i = 0; i &lt; quantidade; i++) {
+printf(&quot;Digite o ID do produto %d: &quot;, i + 1);
+scanf(&quot;%d&quot;, &amp;produtos[i].id);
+printf(&quot;Digite o nome do produto %d: &quot;, i + 1);
+scanf(&quot;%s&quot;, produtos[i].nome);
+printf(&quot;Digite o preco do produto %d: &quot;, i + 1);
+scanf(&quot;%f&quot;, &amp;produtos[i].preco);
+}
+
+printf(&quot;Digite o ID do produto a ser buscado: &quot;);
+scanf(&quot;%d&quot;, &amp;idBuscado);
+
+int encontrado = 0;
+for (i = 0; i &lt; quantidade; i++) {
+if (produtos[i].id == idBuscado) {
+printf(&quot;Produto encontrado:\n&quot;);
+printf(&quot;ID: %d\n&quot;, produtos[i].id);
+printf(&quot;Nome: %s\n&quot;, produtos[i].nome);
+printf(&quot;Preço: R$ %.2f\n&quot;, produtos[i].preco);
+encontrado = 1;
+break; // Sai do loop ao encontrar o produto
+}
+}
+if (!encontrado) {
+printf(&quot;Produto com ID %d não encontrado.\n&quot;, idBuscado);
+}
+return 0;
+}
